@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 
 const Press = () => {
+  let keys = {};
+
   useEffect(() => {
     const handleKeyDown = (event) => {
-      console.log("👇 Key down 👇", event.code);
+      keys[event.code] = true;
+      console.log(keys);
     };
     const handleKeyUp = (event) => {
-      console.log("Key up", event.code);
+      keys[event.code] = false;
+      console.log(keys);
     };
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);

@@ -2,22 +2,24 @@ import React, { useEffect } from "react";
 
 const Press = () => {
   useEffect(() => {
-    const pressKeyDown = (event) => {
-      if (event.key === "ArrowUp") {
-        console.log("위로 👆");
-      } else if (event.key === "ArrowDown") {
-        console.log("아래로 👇");
-      }
+    const handleKeyDown = (event) => {
+      console.log("👇 Key down 👇", event.code);
     };
-    window.addEventListener("keydown", pressKeyDown);
+    const handleKeyUp = (event) => {
+      console.log("Key up", event.code);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
     return () => {
-      window.removeEventListener("keydown", pressKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
   return (
     <div>
-      <h1>위로 👆 or 아래로 👇</h1>
+      <h1>Press any Key</h1>
     </div>
   );
 };
